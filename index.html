@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUMAH ROIS - Inovasi Hidroponik Modern</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .growth-meter {
+            transition: width 2s ease-in-out;
+        }
+        
+        .plant-animation {
+            animation: grow 8s infinite alternate ease-in-out;
+        }
+        
+        @keyframes grow {
+            0% { transform: scale(0.9); }
+            100% { transform: scale(1.1); }
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                    </svg>
+                    <span class="text-xl font-bold text-green-600">RUMAH ROIS</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-green-600">Beranda</a>
+                    <a href="#features" class="text-gray-700 hover:text-green-600">Fitur</a>
+                    <a href="#monitoring" class="text-gray-700 hover:text-green-600">Monitoring</a>
+                    <a href="#tutorial" class="text-gray-700 hover:text-green-600">Tutorial</a>
+                    <a href="#contact" class="text-gray-700 hover:text-green-600">Kontak</a>
+                </div>
+                <button class="md:hidden text-gray-700 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient text-white py-20 px-4">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Belajar Di Rumah Rois Untuk Tanaman Hidroponik</h1>
+                <p class="text-xl mb-8">"Dengan hidroponik, kita bukan hanya menanam tanaman, tetapi juga menanam harapan untuk masa depan.".</p>
+                <div class="flex space-x-4">
+                    <a href="#tutorial" class="bg-white text-green-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition duration-300">Mulai Belajar</a>
+                    <a href="#monitoring" class="border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-green-600 transition duration-300">Statistik</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center plant-animation">
+                <img src="data:image/jpeg;base64,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" alt="HIJAUKAN DUNIA" width="500" height="600">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-4 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16 text-gray-800">Keunggulan Sistem Hidroponik Kami</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg transition duration-300">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Pertumbuhan Lebih Cepat</h3>
+                    <p class="text-gray-600">Tanaman tumbuh 30-50% lebih cepat dibanding metode konvensional karena nutrisi langsung tersedia di akar.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg transition duration-300">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Minim Hama</h3>
+                    <p class="text-gray-600">Tanpa tanah berarti jauh dari hama dan penyakit yang biasa hidup di dalam tanah.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg transition duration-300">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Efisiensi Air</h3>
+                    <p class="text-gray-600">Hanya menggunakan air 10% dari pertanian konvensional karena sirkulasi tertutup tanpa evaporasi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monitoring System Section -->
+    <section id="monitoring" class="py-20 px-4 bg-gray-50">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16 text-gray-800">Sistem Monitoring Hidroponik</h2>
+            
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-800">Pantau Tanaman Anda Secara Real-time</h3>
+                        <p class="text-gray-600 mb-6">Sistem kami memonitor parameter penting untuk pertumbuhan optimal tanaman Anda:</p>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700 font-medium">Nutrisi</span>
+                                    <span class="text-green-600 font-medium" id="nutrition-value">78%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-4">
+                                    <div class="bg-green-500 h-4 rounded-full" id="nutrition-bar" style="width: 78%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700 font-medium">pH Air</span>
+                                    <span class="text-green-600 font-medium" id="ph-value">6.2</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-4">
+                                    <div class="bg-blue-500 h-4 rounded-full" id="ph-bar" style="width: 62%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700 font-medium">Suhu</span>
+                                    <span class="text-green-600 font-medium" id="temp-value">24°C</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-4">
+                                    <div class="bg-yellow-500 h-4 rounded-full" id="temp-bar" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700 font-medium">Kelembaban</span>
+                                    <span class="text-green-600 font-medium" id="humidity-value">65%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-4">
+                                    <div class="bg-purple-500 h-4 rounded-full" id="humidity-bar" style="width: 65%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button id="simulate-btn" class="mt-8 bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition duration-300">Simulasi Perubahan</button>
+                    </div>
+                    
+                    <div class="hidden md:block">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fe8e500b-e5a5-46b1-aef1-68cc6e781cba.png" alt="Sistem hidroponik dengan sensor otomatis di greenhouse modern dengan panel kontrol digital dan tanaman sayuran segar" class="h-full w-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorial Section -->
+    <section id="tutorial" class="py-20 px-4 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16 text-gray-800">Tutorial Hidroponik Pemula</h2>
+            
+            <div class="max-w-5xl mx-auto">
+                <div class="flex flex-wrap mb-8">
+                    <button class="tab-btn px-4 py-2 font-medium text-green-600 border-b-2 border-green-600" data-tab="tab1">Persiapan</button>
+                    <button class="tab-btn px-4 py-2 font-medium text-gray-500" data-tab="tab2">Penanaman</button>
+                    <button class="tab-btn px-4 py-2 font-medium text-gray-500" data-tab="tab3">Perawatan</button>
+                    <button class="tab-btn px-4 py-2 font-medium text-gray-500" data-tab="tab4">Pemecahan Masalah</button>
+                </div>
+                
+                <div id="tab1" class="tab-content active">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4 text-gray-800">Persiapan Sistem Hidroponik</h3>
+                            <ol class="list-decimal list-inside space-y-4 text-gray-700">
+                                <li>Pilih jenis sistem hidroponik (NFT, DFT, Wick, dll)</li>
+                                <li>Siapkan wadah/talang air yang kedap cahaya</li>
+                                <li>Siapkan media tanam seperti rockwool atau serabut kelapa</li>
+                                <li>Pasang pompa udara dan pompa air jika diperlukan</li>
+                                <li>Siapkan nutrisi AB Mix khusus hidroponik</li>
+                                <li>Tentukan lokasi dengan pencahayaan cukup</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/86b2cf17-a348-4302-9b6e-cbab648be17b.png" alt="Alat-alat persiapan hidroponik lengkap di atas meja termasuk pipa PVC, pompa udara, nutrisi AB Mix, rockwool, dan wadah plastik" class="rounded-lg shadow-md">
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="tab2" class="tab-content">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4 text-gray-800">Proses Penanaman Bibit</h3>
+                            <ol class="list-decimal list-inside space-y-4 text-gray-700">
+                                <li>Semai benih di media rockwool yang telah dibasahi</li>
+                                <li>Tempatkan di tempat teduh hingga berkecambah</li>
+                                <li>Setelah berdaun 2-4 helai, pindahkan ke instalasi</li>
+                                <li>Atur posisi tanaman agar batang tidak tergenang air</li>
+                                <li>Pasang timer untuk sirkulasi nutrisi</li>
+                                <li>Mulai berikan larutan nutrisi dengan EC rendah</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c7ac8bc4-3361-4f2b-84b3-2eb1584cfd3e.png" alt="Proses penanaman bibit hidroponik mulai dari penyemaian di rockwool hingga transplantasi ke sistem NFT" class="rounded-lg shadow-md">
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="tab3" class="tab-content">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4 text-gray-800">Perawatan Rutin</h3>
+                            <ol class="list-decimal list-inside space-y-4 text-gray-700">
+                                <li>Cek pH air setiap 2-3 hari (ideal 5.5-6.5)</li>
+                                <li>Ganti larutan nutrisi setiap 2 minggu</li>
+                                <li>Bersihkan wadah dan pompa secara berkala</li>
+                                <li>Amati pertumbuhan akar dan daun</li>
+                                <li>Atur konsentrasi nutrisi sesuai fase pertumbuhan</li>
+                                <li>Kendalikan hama dengan pestisida organik</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/07e8d5f4-0ed5-41a3-9c7c-db08e7e174ca.png" alt="Proses perawatan tanaman hidroponik termasuk pengecekan pH, penggantian nutrisi, dan pembersihan sistem" class="rounded-lg shadow-md">
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="tab4" class="tab-content">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4 text-gray-800">Masalah Umum & Solusi</h3>
+                            <ul class="list-disc list-inside space-y-4 text-gray-700">
+                                <li><strong>Daun menguning</strong>: Kurang nutrisi, tambah konsentrasi EC</li>
+                                <li><strong>Pertumbuhan lambat</strong>: Cek suhu air (ideal 18-22°C)</li>
+                                <li><strong>Akar coklat</strong>: Kurang oksigen, tingkatkan aerasi</li>
+                                <li><strong>Daun menggulung</strong>: Penyakit jamur, perbaiki sirkulasi udara</li>
+                                <li><strong>pH tidak stabil</strong>: Gunakan buffer pH atau ganti larutan</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/79bb0981-1fb9-47c4-9546-e61b97259832.png" alt="Masalah umum tanaman hidroponik dengan diagnosa visual daun dan akar yang tidak sehat" class="rounded-lg shadow-md">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-gray-50">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl font-bold text-center mb-16 text-gray-800">Kontak & Pertanyaan</h2>
+            
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-8 md:p-12">
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-800">Hubungi Kami</h3>
+                        <p class="text-gray-600 mb-6">Punya pertanyaan seputar hidroponik? Silakan tinggalkan pesan Anda.</p>
+                        
+                        <form id="contact-form" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-2">Nama Lengkap</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-2">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                            </div>
+                            
+                            <div>
+                                <label for="subject" class="block text-gray-700 mb-2">Subjek</label>
+                                <select id="subject" name="subject" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <option value="question">Pertanyaan Umum</option>
+                                    <option value="technical">Masalah Teknis</option>
+                                    <option value="order">Pemesanan Produk</option>
+                                    <option value="other">Lainnya</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-gray-700 mb-2">Pesan Anda</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition duration-300 w-full">Kirim Pesan</button>
+                        </form>
+                    </div>
+                    
+                    <div class="p-8 md:p-12 bg-green-600 text-white">
+                        <h3 class="text-2xl font-semibold mb-4">FAQ</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="border-b border-green-500 pb-4">
+                                <h4 class="font-medium mb-2">Berapa lama tanaman hidroponik bisa dipanen?</h4>
+                                <p class="text-green-100">Tergantung jenis tanaman, biasanya 30-50% lebih cepat dari metode konvensional. Contoh: Selada bisa dipanen dalam 30-35 hari.</p>
+                            </div>
+                            
+                            <div class="border-b border-green-500 pb-4">
+                                <h4 class="font-medium mb-2">Berapa modal awal untuk hidroponik?</h4>
+                                <p class="text-green-100">Untuk sistem sederhana mulai dari Rp 500.000,- dengan kapasitas 30-50 lubang tanam.</p>
+                            </div>
+                            
+                            <div class="border-b border-green-500 pb-4">
+                                <h4 class="font-medium mb-2">Tanaman apa yang cocok untuk pemula?</h4>
+                                <p class="text-green-100">Selada, kangkung, pakcoy, dan bayam merupakan tanaman yang relatif mudah untuk pemula.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-medium mb-2">Bagaimana jika terjadi listrik padam?</h4>
+                                <p class="text-green-100">Gunakan UPS atau baterai cadangan untuk pompa, atau rancang sistem yang tidak bergantung sepenuhnya pada listrik.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10 px-4">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-4 mb-6 md:mb-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                    </svg>
+                    <span class="text-xl font-bold text-green-400">RUMAH ROIS</span>
+                </div>
+                
+                <div class="flex flex-col md:flex-row md:space-x-12 text-center md:text-left">
+                    <div class="mb-6 md:mb-0">
+                        <h4 class="font-semibold mb-3">Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#home" class="text-gray-400 hover:text-green-400 transition duration-300">Beranda</a></li>
+                            <li><a href="#features" class="text-gray-400 hover:text-green-400 transition duration-300">Fitur</a></li>
+                            <li><a href="#monitoring" class="text-gray-400 hover:text-green-400 transition duration-300">Monitoring</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-6 md:mb-0">
+                        <h4 class="font-semibold mb-3">Tutorial</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#tutorial" class="text-gray-400 hover:text-green-400 transition duration-300">Panduan</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-green-400 transition duration-300">Blog</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-green-400 transition duration-300">Video</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold mb-3">Kontak</h4>
+                        <ul class="space-y-2">
+                            <li class="text-gray-400">ROIS BUSTOMI</li>
+                            <li class="text-gray-400">+62 895 374 249 885</li>
+                            <li class="text-gray-400">Jawa Barat Tasikmalaya, Indonesia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 INOVASI HIDROPONIK RUMAH ROIS</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all buttons and contents
+                    tabBtns.forEach(btn => {
+                        btn.classList.remove('text-green-600', 'border-green-600');
+                        btn.classList.add('text-gray-500');
+                    });
+                    
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked button and corresponding content
+                    this.classList.remove('text-gray-500');
+                    this.classList.add('text-green-600', 'border-green-600');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Simulation Button
+            const simulateBtn = document.getElementById('simulate-btn');
+            if(simulateBtn) {
+                simulateBtn.addEventListener('click', function() {
+                    // Randomize values
+                    const nutrition = Math.floor(Math.random() * 30) + 70;
+                    const ph = (Math.random() * 2) + 5.5;
+                    const temp = Math.floor(Math.random() * 10) + 20;
+                    const humidity = Math.floor(Math.random() * 20) + 60;
+                    
+                    // Update display values
+                    document.getElementById('nutrition-value').textContent = nutrition + '%';
+                    document.getElementById('ph-value').textContent = ph.toFixed(1);
+                    document.getElementById('temp-value').textContent = temp + '°C';
+                    document.getElementById('humidity-value').textContent = humidity + '%';
+                    
+                    // Update progress bars with animation
+                    animateProgressBar('nutrition-bar', nutrition + '%', 'bg-green-500');
+                    animateProgressBar('ph-bar', Math.floor((ph-5)*100/3) + '%', 'bg-blue-500');
+                    animateProgressBar('temp-bar', (temp-15)*4 + '%', 'bg-yellow-500');
+                    animateProgressBar('humidity-bar', humidity + '%', 'bg-purple-500');
+                });
+            }
+            
+            function animateProgressBar(elementId, width, colorClass) {
+                const element = document.getElementById(elementId);
+                // Reset width to 0 for animation
+                element.style.width = '0%';
+                element.className = `h-4 rounded-full ${colorClass}`;
+                
+                // Force reflow to restart animation
+                void element.offsetWidth;
+                
+                // Set to desired width
+                element.style.width = width;
+            }
+            
+            // Form Submission
+            const contactForm = document.getElementById('contact-form');
+            if(contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Simple validation
+                    if(name.trim() === '' || email.trim() === '' || message.trim() === '') {
+                        alert('Harap lengkapi semua field yang diperlukan!');
+                        return;
+                    }
+                    
+                    // In a real app, you would send this to a server
+                    console.log('Form submitted:', {name, email, subject, message});
+                    
+                    // Show success message
+                    alert('Pesan Anda telah terkirim! Kami akan segera menghubungi Anda kembali.');
+                    
+                    // Reset form
+                    contactForm.reset();
+                });
+            }
+            
+            // Mobile Menu Toggle would go here
+            // Complexity reduced for this example
+        });
+    </script>
+</body>
+</html>
+
